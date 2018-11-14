@@ -113,4 +113,8 @@ public boolean isCellEditable(int rowIndex, int columnIndex)
         }
         return listado;
     }
+    
+    public Proceso getProceso(int index){
+        return this.listProcess.get(index);
+    }
 }

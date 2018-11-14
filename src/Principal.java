@@ -1,4 +1,5 @@
 
+import Algoritmos.FifoView;
 import Procesos.Proceso;
 import Procesos.ProcesoTableModel;
 import java.awt.event.MouseEvent;
@@ -424,11 +425,6 @@ public class Principal extends javax.swing.JFrame {
                 jTableProcesosMouseClicked(evt);
             }
         });
-        jTableProcesos.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                jTableProcesosPropertyChange(evt);
-            }
-        });
         jScrollPane1.setViewportView(jTableProcesos);
 
         jButton1.setText("EXPORTAR");
@@ -505,7 +501,7 @@ public class Principal extends javax.swing.JFrame {
         });
 
         mensajeError.setForeground(new java.awt.Color(255, 51, 51));
-        mensajeError.setText("Debe seleccionar un Algoritmo");
+        mensajeError.setText("Mensaje de Error");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -627,18 +623,11 @@ public class Principal extends javax.swing.JFrame {
         jDocumentation.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jTableProcesosPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jTableProcesosPropertyChange
-        // TODO add your handling code here:
-        
-        
-    }//GEN-LAST:event_jTableProcesosPropertyChange
-
     private void jTableProcesosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableProcesosMouseClicked
         if(evt.getButton() == 3){
             jPopUpMenuTable.setLocation(evt.getLocationOnScreen());
             jPopUpMenuTable.show(evt.getComponent(), evt.getX(), evt.getY());
             jPopUpMenuTable.setVisible(true);            
-
         }else{jPopUpMenuTable.setVisible(false);}
         
        
@@ -680,6 +669,8 @@ public class Principal extends javax.swing.JFrame {
         switch(this.algoritmoSeleccionado){
             case("FIFO"):
                 //TODO fifo
+                FifoView fv = new FifoView(ptm.getSelectedRows());
+                fv.setVisible(true);
                 break;
             case("SCAN"):
                 //TODO scan
