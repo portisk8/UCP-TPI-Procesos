@@ -1,5 +1,12 @@
 
+import Procesos.Proceso;
+import Procesos.ProcesoTableModel;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import javax.swing.ButtonGroup;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
+import javax.swing.table.TableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -16,9 +23,26 @@ public class Principal extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
+    private ArrayList<Proceso> listProcess;
+    private ProcesoTableModel ptm;
+    private String algoritmoSeleccionado = "";
     public Principal() {
         initComponents();
+        mensajeError.setVisible(false);
         groupButton();
+        ArrayList<Proceso> listado = new ArrayList();
+       int orden = 10;
+        for (int i = 0; i < 10; i++) {
+            Proceso p = new Proceso();
+            p.setTiempoLlegada(orden);
+            p.setNombre("p"+i);
+            p.setRafagaCpu(2);
+            orden -= 1;
+            listado.add(p);
+        }
+        ptm = new ProcesoTableModel(listado);
+        
+        jTableProcesos.setModel(ptm);
     }
 
     /**
@@ -43,31 +67,35 @@ public class Principal extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jButton14 = new javax.swing.JButton();
+        jPopUpMenuTable = new javax.swing.JPopupMenu();
+        jItemAgregarFila = new javax.swing.JMenuItem();
+        jItemEliminarFila = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jRBFifo = new javax.swing.JRadioButton();
         jRBScan = new javax.swing.JRadioButton();
         jRBLook = new javax.swing.JRadioButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        jButtonDetalleFIFO = new javax.swing.JButton();
+        jButtonDetalleScan = new javax.swing.JButton();
+        jButtonDetalleLook = new javax.swing.JButton();
         jRBLRU = new javax.swing.JRadioButton();
         jRBLanport = new javax.swing.JRadioButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        jButtonDetalleSwapping = new javax.swing.JButton();
+        jButtonDetalleLRU = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jRBSwapping = new javax.swing.JRadioButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableProcesos = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jButton12 = new javax.swing.JButton();
+        jButtonSimular = new javax.swing.JButton();
+        mensajeError = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -218,12 +246,43 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
+        jItemAgregarFila.setText("Agregar Fila");
+        jItemAgregarFila.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jItemAgregarFilaMouseClicked(evt);
+            }
+        });
+        jItemAgregarFila.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jItemAgregarFilaActionPerformed(evt);
+            }
+        });
+        jPopUpMenuTable.add(jItemAgregarFila);
+
+        jItemEliminarFila.setText("Eliminar Fila");
+        jItemEliminarFila.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jItemEliminarFilaMouseClicked(evt);
+            }
+        });
+        jItemEliminarFila.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jItemEliminarFilaActionPerformed(evt);
+            }
+        });
+        jPopUpMenuTable.add(jItemEliminarFila);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Simulator");
 
         jLabel4.setText("2) Algoritmos:");
 
         jRBFifo.setText("FIFO");
+        jRBFifo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRBFifoActionPerformed(evt);
+            }
+        });
 
         jRBScan.setText("SCAN");
         jRBScan.addActionListener(new java.awt.event.ActionListener() {
@@ -239,11 +298,11 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Detalles");
+        jButtonDetalleFIFO.setText("Detalles");
 
-        jButton4.setText("Detalles");
+        jButtonDetalleScan.setText("Detalles");
 
-        jButton5.setText("Detalles");
+        jButtonDetalleLook.setText("Detalles");
 
         jRBLRU.setText("LRU");
         jRBLRU.addActionListener(new java.awt.event.ActionListener() {
@@ -259,13 +318,18 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setText("Detalles");
+        jButtonDetalleSwapping.setText("Detalles");
 
-        jButton7.setText("Detalles");
+        jButtonDetalleLRU.setText("Detalles");
 
         jButton8.setText("Detalles");
 
         jRBSwapping.setText("SWAPPING");
+        jRBSwapping.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRBSwappingActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -284,9 +348,9 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(jRBLook, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3)
-                            .addComponent(jButton4)
-                            .addComponent(jButton5))
+                            .addComponent(jButtonDetalleFIFO)
+                            .addComponent(jButtonDetalleScan)
+                            .addComponent(jButtonDetalleLook))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jRBSwapping, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -294,8 +358,8 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(jRBLanport, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton6)
-                            .addComponent(jButton7)
+                            .addComponent(jButtonDetalleSwapping)
+                            .addComponent(jButtonDetalleLRU)
                             .addComponent(jButton8))))
                 .addContainerGap(387, Short.MAX_VALUE))
         );
@@ -309,35 +373,34 @@ public class Principal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jRBSwapping)
-                            .addComponent(jButton6))
+                            .addComponent(jButtonDetalleSwapping))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jRBLRU)
-                            .addComponent(jButton7))
+                            .addComponent(jButtonDetalleLRU))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jRBLanport)
-                            .addComponent(jButton8))
-                        .addContainerGap(21, Short.MAX_VALUE))
+                            .addComponent(jButton8)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jRBFifo)
-                            .addComponent(jButton3))
+                            .addComponent(jButtonDetalleFIFO))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jRBScan)
-                            .addComponent(jButton4))
+                            .addComponent(jButtonDetalleScan))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jRBLook)
-                            .addComponent(jButton5))
-                        .addContainerGap(2, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jButtonDetalleLook))))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         jLabel1.setText("1) Procesos:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableProcesos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -345,10 +408,28 @@ public class Principal extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                " ", "Id", "Descripcion", "Duracion", "Prioridad"
+                " ", "Proceso", "Tiempo de Llegada", "Rafaga", "Prioridad"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jTableProcesos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableProcesosMouseClicked(evt);
+            }
+        });
+        jTableProcesos.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jTableProcesosPropertyChange(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTableProcesos);
 
         jButton1.setText("EXPORTAR");
 
@@ -390,7 +471,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 590, Short.MAX_VALUE)
                         .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton1))
@@ -416,22 +497,37 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton12.setText("SIMULAR");
+        jButtonSimular.setText("SIMULAR");
+        jButtonSimular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSimularActionPerformed(evt);
+            }
+        });
+
+        mensajeError.setForeground(new java.awt.Color(255, 51, 51));
+        mensajeError.setText("Debe seleccionar un Algoritmo");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(342, 342, 342)
-                .addComponent(jButton12)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(342, 342, 342)
+                        .addComponent(jButtonSimular))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(298, 298, 298)
+                        .addComponent(mensajeError)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jButton12)
+                .addContainerGap()
+                .addComponent(mensajeError)
+                .addGap(9, 9, 9)
+                .addComponent(jButtonSimular)
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
@@ -496,18 +592,22 @@ public class Principal extends javax.swing.JFrame {
 
     private void jRBScanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBScanActionPerformed
         // TODO add your handling code here:
+        this.algoritmoSeleccionado = "SCAN";
     }//GEN-LAST:event_jRBScanActionPerformed
 
     private void jRBLookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBLookActionPerformed
         // TODO add your handling code here:
+        this.algoritmoSeleccionado = "LOOK";
     }//GEN-LAST:event_jRBLookActionPerformed
 
     private void jRBLRUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBLRUActionPerformed
         // TODO add your handling code here:
+        this.algoritmoSeleccionado = "LRU";
     }//GEN-LAST:event_jRBLRUActionPerformed
 
     private void jRBLanportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBLanportActionPerformed
         // TODO add your handling code here:
+        this.algoritmoSeleccionado = "LANPORT";
     }//GEN-LAST:event_jRBLanportActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
@@ -526,6 +626,92 @@ public class Principal extends javax.swing.JFrame {
         jDocumentation.setLocationRelativeTo(null);
         jDocumentation.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jTableProcesosPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jTableProcesosPropertyChange
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_jTableProcesosPropertyChange
+
+    private void jTableProcesosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableProcesosMouseClicked
+        if(evt.getButton() == 3){
+            jPopUpMenuTable.setLocation(evt.getLocationOnScreen());
+            jPopUpMenuTable.show(evt.getComponent(), evt.getX(), evt.getY());
+            jPopUpMenuTable.setVisible(true);            
+
+        }else{jPopUpMenuTable.setVisible(false);}
+        
+       
+    }//GEN-LAST:event_jTableProcesosMouseClicked
+
+    private void jItemAgregarFilaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jItemAgregarFilaMouseClicked
+        ptm.addRow(new Proceso());
+    }//GEN-LAST:event_jItemAgregarFilaMouseClicked
+
+    private void jItemEliminarFilaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jItemEliminarFilaMouseClicked
+        // TODO add your handling code here:
+        ptm.addRow(new Proceso());
+    }//GEN-LAST:event_jItemEliminarFilaMouseClicked
+
+    private void jItemAgregarFilaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jItemAgregarFilaActionPerformed
+        // TODO add your handling code here:
+        ptm.addRow(new Proceso());
+    }//GEN-LAST:event_jItemAgregarFilaActionPerformed
+
+    private void jItemEliminarFilaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jItemEliminarFilaActionPerformed
+        ptm.removeRow(jTableProcesos.getSelectedRow());
+    }//GEN-LAST:event_jItemEliminarFilaActionPerformed
+
+    private void jButtonSimularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSimularActionPerformed
+        
+        //for (Proceso listProces : ptm.getSelectedRows()) {
+        //    if(listProces.isSeleccionado()){
+        //        System.out.println(listProces.getNombre());
+        //    }
+        //};
+        if(ptm.getSelectedRows().size()<1){
+            mensajeError.setText("Debe seleccionar al menos 1 proceso.");
+            mensajeError.setVisible(true);
+        }else {
+            mensajeError.setText("");
+            mensajeError.setVisible(false);
+        }
+        
+        switch(this.algoritmoSeleccionado){
+            case("FIFO"):
+                //TODO fifo
+                break;
+            case("SCAN"):
+                //TODO scan
+                break;
+            case("LOOK"):
+                //TODO LOOK
+                break;
+            case("SWAPPING"):
+                //TODO SWAPPING
+                break;
+            case("LRU"):
+                //TODO LRU
+                break;
+            case("LANPORT"):
+                //TODO LRU
+                break;
+            default:
+                mensajeError.setText(mensajeError.getText() + " Debe seleccionar un Algoritmo.");
+                mensajeError.setVisible(true);
+        }
+        
+    }//GEN-LAST:event_jButtonSimularActionPerformed
+
+    private void jRBFifoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBFifoActionPerformed
+        // TODO add your handling code here:
+        this.algoritmoSeleccionado = "FIFO";
+    }//GEN-LAST:event_jRBFifoActionPerformed
+
+    private void jRBSwappingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBSwappingActionPerformed
+        // TODO add your handling code here:
+        this.algoritmoSeleccionado = "SWAPPING";
+    }//GEN-LAST:event_jRBSwappingActionPerformed
 
     /**
      * @param args the command line arguments
@@ -575,17 +761,19 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog jAbout;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButtonDetalleFIFO;
+    private javax.swing.JButton jButtonDetalleLRU;
+    private javax.swing.JButton jButtonDetalleLook;
+    private javax.swing.JButton jButtonDetalleScan;
+    private javax.swing.JButton jButtonDetalleSwapping;
+    private javax.swing.JButton jButtonSimular;
     private javax.swing.JDialog jDocumentation;
+    private javax.swing.JMenuItem jItemAgregarFila;
+    private javax.swing.JMenuItem jItemEliminarFila;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -606,6 +794,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPopupMenu jPopUpMenuTable;
     private javax.swing.JRadioButton jRBFifo;
     private javax.swing.JRadioButton jRBLRU;
     private javax.swing.JRadioButton jRBLanport;
@@ -614,7 +803,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRBSwapping;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableProcesos;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel mensajeError;
     // End of variables declaration//GEN-END:variables
 }
