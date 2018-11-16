@@ -9,7 +9,7 @@ package Procesos;
  *
  * @author Augusto
  */
-public class Proceso implements Comparable<Proceso> {
+public class Proceso implements Comparable<Proceso>, Runnable {
     
     private int id;
     private String nombre;
@@ -80,6 +80,11 @@ public class Proceso implements Comparable<Proceso> {
             }
             return 0;
         }
+
+    @Override
+    public void run() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }

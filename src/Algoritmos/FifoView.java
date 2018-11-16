@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
+import javax.swing.JTable;
 
 /**
  *
@@ -22,20 +24,13 @@ public class FifoView extends javax.swing.JFrame {
      * Creates new form FifoView
      */
     
-    private ProcesoTableModel procesoTableModelPendiente;
-    private ProcesoTableModel procesoTableModelEjecucion;
-    private ProcesoTableModel procesoTableModelTerminado;
-
+    ArrayList<Proceso> listProcess;
+    Fifo fifo;
+    
     public FifoView(ArrayList<Proceso> listProcess) {
         initComponents();
-        Collections.sort(listProcess);
-        procesoTableModelPendiente = new ProcesoTableModel(listProcess);
-        procesoTableModelEjecucion = new ProcesoTableModel(new ArrayList<Proceso>());
-        procesoTableModelTerminado = new ProcesoTableModel(new ArrayList<Proceso>());
-        
-        jTableProcesosEspera.setModel(procesoTableModelPendiente);
-        jTableProcesoEnCurso.setModel(procesoTableModelEjecucion);
-        jTableProcesosTerminados.setModel(procesoTableModelTerminado);
+        this.listProcess = listProcess;
+        this.fifo = new Fifo(this, this.listProcess);
     }
 
     /**
@@ -251,7 +246,7 @@ public class FifoView extends javax.swing.JFrame {
 
     private void jBtnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIniciarActionPerformed
         // TODO add your handling code here:
-        new Thread(new HiloFifo()).start();
+        new Thread(this.fifo).start();
     }//GEN-LAST:event_jBtnIniciarActionPerformed
 
     /**
@@ -277,33 +272,22 @@ public class FifoView extends javax.swing.JFrame {
     private javax.swing.JLabel timerCpu;
     // End of variables declaration//GEN-END:variables
 
-    public class HiloFifo implements Runnable{
-
-        @Override
-        public void run() {
-            Proceso proceso;
-            timerCpu.setText("0");
-            int timer = 0;
-            while(procesoTableModelPendiente.getRowCount()>0){
-                proceso = procesoTableModelPendiente.getProceso(0);
-                
-                procesoTableModelPendiente.removeRow(0);
-                procesoTableModelEjecucion.addRow(proceso);
-                for (int i = 0; i < proceso.getRafagaCpu(); i++) {
-                    timer += 1;
-                    timerCpu.setText(Integer.toString(timer));
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(FifoView.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-                procesoTableModelEjecucion.removeRow(0);
-                procesoTableModelTerminado.addRow(proceso);
-            }
-        }
-        
+    public JTable getjTableProcesoEnCurso() {
+        return jTableProcesoEnCurso;
     }
+
+    public JTable getjTableProcesosEspera() {
+        return jTableProcesosEspera;
+    }
+
+    public JTable getjTableProcesosTerminados() {
+        return jTableProcesosTerminados;
+    }
+
+    public JLabel getTimerCpu() {
+        return timerCpu;
+    }
+
 
 
 }
