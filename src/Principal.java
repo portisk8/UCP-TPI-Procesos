@@ -1,5 +1,6 @@
 
 import Algoritmos.FifoView;
+import Algoritmos.LamportView;
 import Procesos.Proceso;
 import Procesos.ProcesoTableModel;
 import java.awt.event.MouseEvent;
@@ -93,11 +94,13 @@ public class Principal extends javax.swing.JFrame {
         jButtonDetalleScan = new javax.swing.JButton();
         jButtonDetalleLook = new javax.swing.JButton();
         jRBLRU = new javax.swing.JRadioButton();
-        jRBLanport = new javax.swing.JRadioButton();
+        jRBLamport = new javax.swing.JRadioButton();
         jButtonDetalleSwapping = new javax.swing.JButton();
         jButtonDetalleLRU = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jRBSwapping = new javax.swing.JRadioButton();
+        jButtonDetalleSwapping1 = new javax.swing.JButton();
+        jRBSwapping1 = new javax.swing.JRadioButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -330,7 +333,7 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabelAlgoritmoSeleccionado)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(317, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -449,10 +452,10 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jRBLanport.setText("LANPORT");
-        jRBLanport.addActionListener(new java.awt.event.ActionListener() {
+        jRBLamport.setText("LAMPORT");
+        jRBLamport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRBLanportActionPerformed(evt);
+                jRBLamportActionPerformed(evt);
             }
         });
 
@@ -466,6 +469,15 @@ public class Principal extends javax.swing.JFrame {
         jRBSwapping.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRBSwappingActionPerformed(evt);
+            }
+        });
+
+        jButtonDetalleSwapping1.setText("Detalles");
+
+        jRBSwapping1.setText("PETERSON");
+        jRBSwapping1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRBSwapping1ActionPerformed(evt);
             }
         });
 
@@ -493,13 +505,18 @@ public class Principal extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jRBSwapping, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jRBLRU, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jRBLanport, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jRBLamport, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonDetalleSwapping)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButtonDetalleSwapping)
+                                .addGap(18, 18, 18)
+                                .addComponent(jRBSwapping1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonDetalleSwapping1))
                             .addComponent(jButtonDetalleLRU)
                             .addComponent(jButton8))))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addGap(82, 82, 82))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -509,16 +526,20 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRBSwapping)
-                            .addComponent(jButtonDetalleSwapping))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jRBSwapping1)
+                                .addComponent(jButtonDetalleSwapping1))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jRBSwapping)
+                                .addComponent(jButtonDetalleSwapping)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jRBLRU)
                             .addComponent(jButtonDetalleLRU))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRBLanport)
+                            .addComponent(jRBLamport)
                             .addComponent(jButton8)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
@@ -568,11 +589,11 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(391, 391, 391))
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -612,10 +633,10 @@ public class Principal extends javax.swing.JFrame {
         this.algoritmoSeleccionado = "LRU";
     }//GEN-LAST:event_jRBLRUActionPerformed
 
-    private void jRBLanportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBLanportActionPerformed
+    private void jRBLamportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBLamportActionPerformed
         // TODO add your handling code here:
-        this.algoritmoSeleccionado = "LANPORT";
-    }//GEN-LAST:event_jRBLanportActionPerformed
+        this.algoritmoSeleccionado = "LAMPORT";
+    }//GEN-LAST:event_jRBLamportActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
         // TODO add your handling code here:
@@ -695,8 +716,10 @@ public class Principal extends javax.swing.JFrame {
             case("LRU"):
                 //TODO LRU
                 break;
-            case("LANPORT"):
-                //TODO LRU
+            case("LAMPORT"):
+                //TODO LAMPORT
+                LamportView lv = new LamportView(ptm.getSelectedRows());
+                lv.setVisible(true);
                 break;
             default:
                 mensajeError.setText(mensajeError.getText() + " Debe seleccionar un Algoritmo.");
@@ -714,6 +737,10 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.algoritmoSeleccionado = "SWAPPING";
     }//GEN-LAST:event_jRBSwappingActionPerformed
+
+    private void jRBSwapping1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBSwapping1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRBSwapping1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -756,7 +783,7 @@ public class Principal extends javax.swing.JFrame {
         bg1.add(jRBScan);
         bg1.add(jRBLook);
         bg1.add(jRBLRU);
-        bg1.add(jRBLanport);
+        bg1.add(jRBLamport);
         bg1.add(jRBSwapping);
     }
 
@@ -772,6 +799,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonDetalleLook;
     private javax.swing.JButton jButtonDetalleScan;
     private javax.swing.JButton jButtonDetalleSwapping;
+    private javax.swing.JButton jButtonDetalleSwapping1;
     private javax.swing.JButton jButtonSimular;
     private javax.swing.JDialog jDocumentation;
     private javax.swing.JMenuItem jItemAgregarFila;
@@ -800,10 +828,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu jPopUpMenuTable;
     private javax.swing.JRadioButton jRBFifo;
     private javax.swing.JRadioButton jRBLRU;
-    private javax.swing.JRadioButton jRBLanport;
+    private javax.swing.JRadioButton jRBLamport;
     private javax.swing.JRadioButton jRBLook;
     private javax.swing.JRadioButton jRBScan;
     private javax.swing.JRadioButton jRBSwapping;
+    private javax.swing.JRadioButton jRBSwapping1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableProcesos;
