@@ -8,6 +8,7 @@ package Algoritmos;
 import Procesos.Proceso;
 import Procesos.ProcesoTableModel;
 import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.JTable;
 
 /**
@@ -31,6 +32,7 @@ public class LamportView extends javax.swing.JFrame {
      */
     public LamportView(ArrayList<Proceso> l_listProcess) {
         initComponents();
+        Collections.sort(l_listProcess);
         this.setListProcess(l_listProcess);
         this.setProcesoTableModelEspera(new ProcesoTableModel(l_listProcess));
         this.setProcesoTableModelEnCurso(new ProcesoTableModel(new ArrayList<Proceso>()));
@@ -233,9 +235,12 @@ public class LamportView extends javax.swing.JFrame {
     private void jBtnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIniciarActionPerformed
         // TODO add your handling code here:
         //new Thread(this.fifo).start();
-        for (Proceso process : listProcess) {
-            new Thread(new Lamport(this,process)).start();
-            System.out.println("Proceso " + process.getNombre() + " DESEA entrar en la seccion Critica");
+        ArrayList<Thread> hilos = new ArrayList();
+        for (Proceso process : this.getListProcess()) {
+            hilos.add(new Thread(new Lamport(this,process)));
+        }
+        for (Thread hilo : hilos) {
+            hilo.start();
         }
     }//GEN-LAST:event_jBtnIniciarActionPerformed
 

@@ -63,27 +63,23 @@ while ( (number[j] !=0) && ( (number[j] < number[i]) || ((number[j] == number[i]
 */
 boolean aux = false;
 while(!aux){
-    boolean b = LamportView.listProcessTerminados.size() == LamportView.listProcess.indexOf(this.process);
-    if(!LamportView.seccionCriticaOcupada && b){
+    boolean b = LamportView.procesoTableModelEnCurso.esElMasTemprano(process);
+    //boolean b = LamportView.listProcessTerminados.size() == LamportView.listProcess.indexOf(this.process);
+    if(!LamportView.seccionCriticaOcupada ){
         LamportView.seccionCriticaOcupada = true;
         aux = true;
         LamportView.procesoTableModelEspera.removeRow(0);
         LamportView.procesoTableModelEnCurso.addRow(process);
         CriticalSection();
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Lamport.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 }
 
 }
 @Override
 public void liberarSC () {
+    LamportView.procesoTableModelEnCurso.removeRow(0);
     LamportView.seccionCriticaOcupada = false;
     LamportView.listProcessTerminados.add(process);
-    LamportView.procesoTableModelEnCurso.removeRow(0);
     LamportView.procesoTableModelSalientes.addRow(process);
     nonCriticalSection();
 }
@@ -99,6 +95,7 @@ public void liberarSC () {
 
     @Override
     public void run() {
+            System.out.println("Proceso " + process.getNombre() + " DESEA entrar en la seccion Critica");
         this.accederSC();
         try {
             Thread.sleep(5000);

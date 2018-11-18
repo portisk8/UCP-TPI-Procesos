@@ -1,4 +1,6 @@
 
+import Algoritmos.Disco;
+import Algoritmos.DiscoView;
 import Algoritmos.FifoView;
 import Algoritmos.LamportView;
 import Procesos.Proceso;
@@ -28,8 +30,11 @@ public class Principal extends javax.swing.JFrame {
     private ArrayList<Proceso> listProcess;
     private ProcesoTableModel ptm;
     private String algoritmoSeleccionado = "";
+    private ArrayList<Integer> listadoPeticiones;
     public Principal() {
         initComponents();
+        jPanelDisco.setVisible(false);
+        jPanelAlgoritmoPlanificacion.setVisible(false);
         mensajeError.setVisible(false);
         groupButton();
         ArrayList<Proceso> listado = new ArrayList();
@@ -43,8 +48,9 @@ public class Principal extends javax.swing.JFrame {
             listado.add(p);
         }
         ptm = new ProcesoTableModel(listado);
-        
+        jTAListDisc.setText("");
         jTableProcesos.setModel(ptm);
+        listadoPeticiones = new ArrayList<Integer>();
     }
 
     /**
@@ -72,7 +78,7 @@ public class Principal extends javax.swing.JFrame {
         jPopUpMenuTable = new javax.swing.JPopupMenu();
         jItemAgregarFila = new javax.swing.JMenuItem();
         jItemEliminarFila = new javax.swing.JMenuItem();
-        jPanel2 = new javax.swing.JPanel();
+        jPanelAlgoritmoPlanificacion = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableProcesos = new javax.swing.JTable();
@@ -88,7 +94,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jRBFifo = new javax.swing.JRadioButton();
-        jRBScan = new javax.swing.JRadioButton();
+        jRBSSFT = new javax.swing.JRadioButton();
         jRBLook = new javax.swing.JRadioButton();
         jButtonDetalleFIFO = new javax.swing.JButton();
         jButtonDetalleScan = new javax.swing.JButton();
@@ -101,6 +107,17 @@ public class Principal extends javax.swing.JFrame {
         jRBSwapping = new javax.swing.JRadioButton();
         jButtonDetalleSwapping1 = new javax.swing.JButton();
         jRBSwapping1 = new javax.swing.JRadioButton();
+        jLabel10 = new javax.swing.JLabel();
+        jPanelDisco = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTAListDisc = new javax.swing.JTextArea();
+        jTextFieldPosicionDisco = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jTextFieldPeticionPos = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -333,7 +350,7 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabelAlgoritmoSeleccionado)))
-                .addContainerGap(317, Short.MAX_VALUE))
+                .addContainerGap(312, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -347,28 +364,28 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(48, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelAlgoritmoPlanificacionLayout = new javax.swing.GroupLayout(jPanelAlgoritmoPlanificacion);
+        jPanelAlgoritmoPlanificacion.setLayout(jPanelAlgoritmoPlanificacionLayout);
+        jPanelAlgoritmoPlanificacionLayout.setHorizontalGroup(
+            jPanelAlgoritmoPlanificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAlgoritmoPlanificacionLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelAlgoritmoPlanificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAlgoritmoPlanificacionLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton1))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(jPanelAlgoritmoPlanificacionLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        jPanelAlgoritmoPlanificacionLayout.setVerticalGroup(
+            jPanelAlgoritmoPlanificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAlgoritmoPlanificacionLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -376,7 +393,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(5, 5, 5)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelAlgoritmoPlanificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -413,7 +430,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(mensajeError)
                 .addGap(9, 9, 9)
                 .addComponent(jButtonSimular)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel4.setText("1) Algoritmos:");
@@ -425,10 +442,10 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jRBScan.setText("SCAN");
-        jRBScan.addActionListener(new java.awt.event.ActionListener() {
+        jRBSSFT.setText("SSTF");
+        jRBSSFT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRBScanActionPerformed(evt);
+                jRBSSFTActionPerformed(evt);
             }
         });
 
@@ -494,7 +511,7 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(102, 102, 102)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jRBFifo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jRBScan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jRBSSFT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jRBLook, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -548,13 +565,93 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(jButtonDetalleFIFO))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRBScan)
+                            .addComponent(jRBSSFT)
                             .addComponent(jButtonDetalleScan))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jRBLook)
                             .addComponent(jButtonDetalleLook))))
                 .addContainerGap(21, Short.MAX_VALUE))
+        );
+
+        jLabel11.setText("2) Posicion Inicial del cabezal del Disco:");
+
+        jTAListDisc.setColumns(20);
+        jTAListDisc.setRows(5);
+        jScrollPane3.setViewportView(jTAListDisc);
+
+        jLabel12.setText("3) Peticiones:");
+
+        jLabel13.setText("Posicion:");
+
+        jButton3.setText("Agregar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextFieldPeticionPos, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton3)
+                .addContainerGap(57, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(jTextFieldPeticionPos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanelDiscoLayout = new javax.swing.GroupLayout(jPanelDisco);
+        jPanelDisco.setLayout(jPanelDiscoLayout);
+        jPanelDiscoLayout.setHorizontalGroup(
+            jPanelDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelDiscoLayout.createSequentialGroup()
+                .addGroup(jPanelDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelDiscoLayout.createSequentialGroup()
+                        .addGroup(jPanelDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelDiscoLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldPosicionDisco, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelDiscoLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel12)))
+                        .addGap(20, 20, 20))
+                    .addGroup(jPanelDiscoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane3)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanelDiscoLayout.setVerticalGroup(
+            jPanelDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelDiscoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11)
+                    .addComponent(jTextFieldPosicionDisco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jMenu1.setText("File");
@@ -590,10 +687,14 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jPanelDisco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanelAlgoritmoPlanificacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -601,9 +702,16 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
+                .addComponent(jPanelDisco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(286, 286, 286)
+                        .addComponent(jLabel10))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanelAlgoritmoPlanificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -618,10 +726,12 @@ public class Principal extends javax.swing.JFrame {
         jAbout.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
-    private void jRBScanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBScanActionPerformed
+    private void jRBSSFTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBSSFTActionPerformed
         // TODO add your handling code here:
-        this.algoritmoSeleccionado = "SCAN";
-    }//GEN-LAST:event_jRBScanActionPerformed
+        this.algoritmoSeleccionado = "SSTF";
+        jPanelDisco.setVisible(true);
+        jPanelAlgoritmoPlanificacion.setVisible(false);
+    }//GEN-LAST:event_jRBSSFTActionPerformed
 
     private void jRBLookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBLookActionPerformed
         // TODO add your handling code here:
@@ -704,8 +814,10 @@ public class Principal extends javax.swing.JFrame {
                 FifoView fv = new FifoView(ptm.getSelectedRows());
                 fv.setVisible(true);
                 break;
-            case("SCAN"):
+            case("SSTF"):
                 //TODO scan
+                DiscoView dv = new DiscoView(Integer.parseInt(jTextFieldPosicionDisco.getText()), listadoPeticiones);
+                dv.setVisible(true);
                 break;
             case("LOOK"):
                 //TODO LOOK
@@ -731,16 +843,28 @@ public class Principal extends javax.swing.JFrame {
     private void jRBFifoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBFifoActionPerformed
         // TODO add your handling code here:
         this.algoritmoSeleccionado = "FIFO";
+        jPanelDisco.setVisible(false);
+        jPanelAlgoritmoPlanificacion.setVisible(true);
     }//GEN-LAST:event_jRBFifoActionPerformed
 
     private void jRBSwappingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBSwappingActionPerformed
         // TODO add your handling code here:
         this.algoritmoSeleccionado = "SWAPPING";
+        jPanelDisco.setVisible(false);
+        jPanelAlgoritmoPlanificacion.setVisible(true);
     }//GEN-LAST:event_jRBSwappingActionPerformed
 
     private void jRBSwapping1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBSwapping1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRBSwapping1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        if(!jTextFieldPeticionPos.getText().isEmpty()){
+            listadoPeticiones.add(Integer.parseInt(jTextFieldPeticionPos.getText()));
+            jTAListDisc.setText(jTAListDisc.getText() + "\n" + "Posicion: " + jTextFieldPeticionPos.getText());
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -780,7 +904,7 @@ public class Principal extends javax.swing.JFrame {
     private void groupButton() {
         ButtonGroup bg1 = new ButtonGroup( );
         bg1.add(jRBFifo);
-        bg1.add(jRBScan);
+        bg1.add(jRBSSFT);
         bg1.add(jRBLook);
         bg1.add(jRBLRU);
         bg1.add(jRBLamport);
@@ -793,6 +917,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButtonDetalleFIFO;
     private javax.swing.JButton jButtonDetalleLRU;
@@ -805,6 +930,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jItemAgregarFila;
     private javax.swing.JMenuItem jItemEliminarFila;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -825,18 +954,24 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanelAlgoritmoPlanificacion;
+    private javax.swing.JPanel jPanelDisco;
     private javax.swing.JPopupMenu jPopUpMenuTable;
     private javax.swing.JRadioButton jRBFifo;
     private javax.swing.JRadioButton jRBLRU;
     private javax.swing.JRadioButton jRBLamport;
     private javax.swing.JRadioButton jRBLook;
-    private javax.swing.JRadioButton jRBScan;
+    private javax.swing.JRadioButton jRBSSFT;
     private javax.swing.JRadioButton jRBSwapping;
     private javax.swing.JRadioButton jRBSwapping1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextArea jTAListDisc;
     private javax.swing.JTable jTableProcesos;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField jTextFieldPeticionPos;
+    private javax.swing.JTextField jTextFieldPosicionDisco;
     private javax.swing.JLabel mensajeError;
     // End of variables declaration//GEN-END:variables
 }

@@ -117,4 +117,20 @@ public boolean isCellEditable(int rowIndex, int columnIndex)
     public Proceso getProceso(int index){
         return this.listProcess.get(index);
     }
+
+    public boolean esElMasTemprano(Proceso process) {
+        Proceso procesoMinimo = new Proceso();
+        int min = 1000;
+        int indice = 0;
+        for (Proceso p : this.listProcess) {
+            if (min < p.getTiempoLlegada()){
+                min = p.getTiempoLlegada();
+                procesoMinimo = p;
+            }else if(min == p.getTiempoLlegada()){
+                indice = (this.listProcess.indexOf(p) < this.listProcess.indexOf(procesoMinimo))?this.listProcess.indexOf(p) : this.listProcess.indexOf(procesoMinimo);
+            }
+        }
+        if(process.getNombre().equals(procesoMinimo.getNombre())) return true;
+        return false;
+    }
 }
