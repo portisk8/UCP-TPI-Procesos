@@ -70,6 +70,11 @@ public class Proceso implements Comparable<Proceso>, Runnable {
         this.seleccionado = seleccionado;
     }
     
+    public String mostrar(){ // defino mi método mostrar para poder visualizar mi objeto
+        //System.out.println(this.nom + " " + this.bloqueado);
+        return (this.getNombre()+ " " + this.isBloqueado());
+    }
+    
     @Override
         public int compareTo(Proceso p) {
             if (this.getTiempoLlegada() < p.getTiempoLlegada()) {

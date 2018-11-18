@@ -3,6 +3,7 @@ import Algoritmos.Disco;
 import Algoritmos.DiscoView;
 import Algoritmos.FifoView;
 import Algoritmos.LamportView;
+import Algoritmos.SwappingView;
 import Procesos.Proceso;
 import Procesos.ProcesoTableModel;
 import java.awt.event.MouseEvent;
@@ -824,6 +825,8 @@ public class Principal extends javax.swing.JFrame {
                 break;
             case("SWAPPING"):
                 //TODO SWAPPING
+                SwappingView sw = new SwappingView(ptm.getSelectedRows());
+                sw.setVisible(true);
                 break;
             case("LRU"):
                 //TODO LRU
