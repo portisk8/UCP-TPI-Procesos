@@ -450,6 +450,7 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jRBLook.setText("LOOK");
+        jRBLook.setEnabled(false);
         jRBLook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRBLookActionPerformed(evt);
@@ -457,12 +458,18 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jButtonDetalleFIFO.setText("Detalles");
+        jButtonDetalleFIFO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDetalleFIFOActionPerformed(evt);
+            }
+        });
 
         jButtonDetalleScan.setText("Detalles");
 
         jButtonDetalleLook.setText("Detalles");
 
         jRBLRU.setText("LRU");
+        jRBLRU.setEnabled(false);
         jRBLRU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRBLRUActionPerformed(evt);
@@ -477,6 +484,11 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jButtonDetalleSwapping.setText("Detalles");
+        jButtonDetalleSwapping.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDetalleSwappingActionPerformed(evt);
+            }
+        });
 
         jButtonDetalleLRU.setText("Detalles");
 
@@ -492,6 +504,7 @@ public class Principal extends javax.swing.JFrame {
         jButtonDetalleSwapping1.setText("Detalles");
 
         jRBSwapping1.setText("PETERSON");
+        jRBSwapping1.setEnabled(false);
         jRBSwapping1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRBSwapping1ActionPerformed(evt);
@@ -623,19 +636,17 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanelDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelDiscoLayout.createSequentialGroup()
-                        .addGroup(jPanelDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelDiscoLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextFieldPosicionDisco, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelDiscoLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel12)))
-                        .addGap(20, 20, 20))
-                    .addGroup(jPanelDiscoLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane3)))
+                        .addGroup(jPanelDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanelDiscoLayout.createSequentialGroup()
+                                .addGroup(jPanelDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanelDiscoLayout.createSequentialGroup()
+                                        .addComponent(jLabel11)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jTextFieldPosicionDisco, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel12))
+                                .addGap(20, 20, 20))
+                            .addComponent(jScrollPane3))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelDiscoLayout.setVerticalGroup(
@@ -855,7 +866,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jRBSwappingActionPerformed
 
     private void jRBSwapping1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBSwapping1ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jRBSwapping1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -866,6 +877,46 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButtonDetalleSwappingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDetalleSwappingActionPerformed
+        
+    }//GEN-LAST:event_jButtonDetalleSwappingActionPerformed
+
+    private void jButtonDetalleFIFOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDetalleFIFOActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonDetalleFIFOActionPerformed
+
+    public void obtenerAlgoritmo(){
+    switch(this.algoritmoSeleccionado){
+            case("FIFO"):
+                //TODO fifo
+                //FifoView fv = new FifoView(ptm.getSelectedRows());
+                //fv.setVisible(true);
+                break;
+            case("SSTF"):
+                //TODO scan
+                //DiscoView dv = new DiscoView(Integer.parseInt(jTextFieldPosicionDisco.getText()), listadoPeticiones);
+                //dv.setVisible(true);
+                break;
+            case("LOOK"):
+                //TODO LOOK
+                break;
+            case("SWAPPING"):
+                //TODO SWAPPING
+                break;
+            case("LRU"):
+                //TODO LRU
+                break;
+            case("LAMPORT"):
+                //TODO LAMPORT
+                LamportView lv = new LamportView(ptm.getSelectedRows());
+                lv.setVisible(true);
+                break;
+            default:
+                mensajeError.setText(mensajeError.getText() + " Debe seleccionar un Algoritmo.");
+                mensajeError.setVisible(true);
+        }
+} 
+    
     /**
      * @param args the command line arguments
      */
