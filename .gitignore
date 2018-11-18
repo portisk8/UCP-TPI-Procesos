@@ -10,6 +10,9 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+# Compilacion de netbeans
+nbproject/private/private.properties
+
 # Package Files #
 *.jar
 *.war
