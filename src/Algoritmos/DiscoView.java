@@ -81,12 +81,14 @@ public class DiscoView extends javax.swing.JFrame {
         jLabel3.setText("Pistas Recorridas:");
 
         jLabelPistasRecorridas.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        jLabelPistasRecorridas.setForeground(new java.awt.Color(0, 0, 255));
         jLabelPistasRecorridas.setText("jLabel3");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Longitud Promedio de búsquedas:");
 
         jLabelLongitudPromedio.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        jLabelLongitudPromedio.setForeground(new java.awt.Color(0, 153, 51));
         jLabelLongitudPromedio.setText("jLabel3");
 
         jButton1.setText("Cerrar");
@@ -114,11 +116,11 @@ public class DiscoView extends javax.swing.JFrame {
                         .addComponent(jLabel4)))
                 .addGap(70, 70, 70))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(91, 91, 91)
-                .addComponent(jLabelPistasRecorridas, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66)
+                .addComponent(jLabelPistasRecorridas, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelLongitudPromedio, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(188, 188, 188))
+                .addComponent(jLabelLongitudPromedio, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(119, 119, 119))
             .addGroup(layout.createSequentialGroup()
                 .addGap(285, 285, 285)
                 .addComponent(jButton1)
@@ -143,12 +145,12 @@ public class DiscoView extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4))
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabelLongitudPromedio)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelPistasRecorridas)
+                        .addContainerGap(130, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelPistasRecorridas)
+                            .addComponent(jLabelLongitudPromedio))
                         .addGap(35, 35, 35)))
                 .addComponent(jButton1)
                 .addContainerGap())
