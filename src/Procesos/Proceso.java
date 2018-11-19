@@ -70,6 +70,15 @@ public class Proceso implements Comparable<Proceso>, Runnable {
         this.seleccionado = seleccionado;
     }
     
+    public String mostrar(){ // defino mi método mostrar para poder visualizar mi objeto de la manera en que necesito en SwappingView
+        //System.out.println(this.nom + " " + this.bloqueado);
+        String aux ;
+        if(this.isBloqueado() == true ){ //verifico si  esta bloqueado retorno el String "Bloqueado", caso contrario retorno "Listo"
+            aux = "Bloqueado";
+        }else{ aux = "Listo";}
+        return (this.getNombre()+ " - " + aux); //retorno una cadena de caracteres con el nombre y el estado bbloqueado
+    }
+    
     @Override
         public int compareTo(Proceso p) {
             if (this.getTiempoLlegada() < p.getTiempoLlegada()) {

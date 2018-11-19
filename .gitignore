@@ -11,6 +11,8 @@
 .mtj.tmp/
 
 /nbproject/private/
+# Compilacion de netbeans
+nbproject/private/private.properties
 
 # Package Files #
 *.jar

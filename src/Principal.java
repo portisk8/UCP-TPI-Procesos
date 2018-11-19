@@ -3,6 +3,7 @@ import Algoritmos.Disco;
 import Algoritmos.DiscoView;
 import Algoritmos.FifoView;
 import Algoritmos.LamportView;
+import Algoritmos.SwappingView;
 import Procesos.Proceso;
 import Procesos.ProcesoTableModel;
 import java.awt.event.MouseEvent;
@@ -78,6 +79,46 @@ public class Principal extends javax.swing.JFrame {
         jPopUpMenuTable = new javax.swing.JPopupMenu();
         jItemAgregarFila = new javax.swing.JMenuItem();
         jItemEliminarFila = new javax.swing.JMenuItem();
+        jDetalleAlgoritmoFifo = new javax.swing.JDialog();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        jLabel14 = new javax.swing.JLabel();
+        jDetalleAlgoritmoSwapping = new javax.swing.JDialog();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextArea3 = new javax.swing.JTextArea();
+        jLabel15 = new javax.swing.JLabel();
+        jDetalleAlgoritmoSSTF = new javax.swing.JDialog();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTextArea4 = new javax.swing.JTextArea();
+        jLabel16 = new javax.swing.JLabel();
+        jDetalleAlgoritmoDekker = new javax.swing.JDialog();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jTextArea5 = new javax.swing.JTextArea();
+        jLabel17 = new javax.swing.JLabel();
+        jDetalleAlgoritmoPeterson = new javax.swing.JDialog();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jTextArea6 = new javax.swing.JTextArea();
+        jLabel18 = new javax.swing.JLabel();
+        jDetalleAlgoritmoLamport = new javax.swing.JDialog();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jTextArea7 = new javax.swing.JTextArea();
+        jLabel19 = new javax.swing.JLabel();
+        jDetalleAlgoritmoLRU = new javax.swing.JDialog();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        jTextArea8 = new javax.swing.JTextArea();
+        jLabel20 = new javax.swing.JLabel();
+        jDetalleAlgoritmoLook = new javax.swing.JDialog();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        jTextArea10 = new javax.swing.JTextArea();
+        jLabel22 = new javax.swing.JLabel();
+        jDetalleAlgoritmoScan = new javax.swing.JDialog();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        jTextArea9 = new javax.swing.JTextArea();
+        jLabel21 = new javax.swing.JLabel();
+        jDetalleAlgoritmocScan = new javax.swing.JDialog();
+        jScrollPane13 = new javax.swing.JScrollPane();
+        jTextArea11 = new javax.swing.JTextArea();
+        jLabel23 = new javax.swing.JLabel();
         jPanelAlgoritmoPlanificacion = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -107,6 +148,12 @@ public class Principal extends javax.swing.JFrame {
         jRBSwapping = new javax.swing.JRadioButton();
         jButtonDetalleSwapping1 = new javax.swing.JButton();
         jRBSwapping1 = new javax.swing.JRadioButton();
+        jRBDekker = new javax.swing.JRadioButton();
+        jButtonDetalleSwapping2 = new javax.swing.JButton();
+        cScan = new javax.swing.JRadioButton();
+        jButton9 = new javax.swing.JButton();
+        SCAN = new javax.swing.JRadioButton();
+        jButton10 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jPanelDisco = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
@@ -294,6 +341,399 @@ public class Principal extends javax.swing.JFrame {
         });
         jPopUpMenuTable.add(jItemEliminarFila);
 
+        jDetalleAlgoritmoFifo.setLocation(new java.awt.Point(650, 300));
+        jDetalleAlgoritmoFifo.setSize(new java.awt.Dimension(550, 450));
+
+        jTextArea2.setEditable(false);
+        jTextArea2.setBackground(new java.awt.Color(240, 240, 240));
+        jTextArea2.setColumns(20);
+        jTextArea2.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jTextArea2.setRows(5);
+        jTextArea2.setText("En este método el sistema operativo sólo tiene que guardar en qué \norden las páginas fueron cargadas, de modo que al necesitar hacer\nespacio pueda fácilmente elegir la primera página cargada. Se usa \nuna cola, al cargar una página nueva se ingresa en el último lugar. \nAunquelas colas FIFO son simples e intuitivas, no se comportan de \nmanera aceptable en la aplicación práctica, por lo que es raro su uso\nen su forma simple. Uno de los problemas que presentan \nes la llamada Anomalía FIFO oAnomalía de Belady. Belady encontró\nejemplos en los que un sistema con un número de marcos de páginas\nigual a tres tenía menos fallosde páginas que un sistema con cuatro \nmarcos de páginas. El problema consiste en que podemos quitar de \nmemoria una página de memoria muy usada, sólo porque es la más\nantigua");
+        jTextArea2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTextArea2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTextArea2.setPreferredSize(new java.awt.Dimension(350, 250));
+        jScrollPane4.setViewportView(jTextArea2);
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel14.setText("              Primero en Entrar Pimero En Salir (FIFO)");
+
+        javax.swing.GroupLayout jDetalleAlgoritmoFifoLayout = new javax.swing.GroupLayout(jDetalleAlgoritmoFifo.getContentPane());
+        jDetalleAlgoritmoFifo.getContentPane().setLayout(jDetalleAlgoritmoFifoLayout);
+        jDetalleAlgoritmoFifoLayout.setHorizontalGroup(
+            jDetalleAlgoritmoFifoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDetalleAlgoritmoFifoLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(64, Short.MAX_VALUE))
+            .addGroup(jDetalleAlgoritmoFifoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4)
+                .addContainerGap())
+        );
+        jDetalleAlgoritmoFifoLayout.setVerticalGroup(
+            jDetalleAlgoritmoFifoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDetalleAlgoritmoFifoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(47, Short.MAX_VALUE))
+        );
+
+        jDetalleAlgoritmoSwapping.setLocation(new java.awt.Point(650, 300));
+        jDetalleAlgoritmoSwapping.setSize(new java.awt.Dimension(570, 490));
+
+        jTextArea3.setEditable(false);
+        jTextArea3.setBackground(new java.awt.Color(240, 240, 240));
+        jTextArea3.setColumns(20);
+        jTextArea3.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jTextArea3.setRows(5);
+        jTextArea3.setText("La mayoría de los sistemas operativos modernos poseen un mecanismo\nllamado memoria virtual, que permite hacer creer a los programas que \ntienen más memoria que la disponible realmente. Como en realidad no \nse tiene físicamente toda esa memoria, algunos procesos no podrán ser\nubicados en la memoria RAM.\nEn este caso es cuando es útil el espacio de intercambio: el sistema \noperativo puede buscar un proceso poco activo, y moverlo al área de \nintercambio (el disco duro) y de esa forma liberar la memoria principal\npara cargar otros procesos. Mientras no haga falta, el proceso extraído\nde memoria puede quedarse en el disco, ya que ahí no utiliza memoria\nfísica. Cuando sea necesario, el sistema vuelve a hacer un intercambio,\npasándolo del disco a memoria RAM. Es un proceso lento (comparado \ncon usar sólo la memoria RAM), pero permite dar la impresión de que \nhay más memoria disponible.");
+        jTextArea3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTextArea3.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTextArea3.setPreferredSize(new java.awt.Dimension(350, 300));
+        jScrollPane5.setViewportView(jTextArea3);
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel15.setText("           Swapping");
+
+        javax.swing.GroupLayout jDetalleAlgoritmoSwappingLayout = new javax.swing.GroupLayout(jDetalleAlgoritmoSwapping.getContentPane());
+        jDetalleAlgoritmoSwapping.getContentPane().setLayout(jDetalleAlgoritmoSwappingLayout);
+        jDetalleAlgoritmoSwappingLayout.setHorizontalGroup(
+            jDetalleAlgoritmoSwappingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDetalleAlgoritmoSwappingLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDetalleAlgoritmoSwappingLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(176, 176, 176))
+        );
+        jDetalleAlgoritmoSwappingLayout.setVerticalGroup(
+            jDetalleAlgoritmoSwappingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDetalleAlgoritmoSwappingLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
+        );
+
+        jDetalleAlgoritmoSSTF.setLocation(new java.awt.Point(650, 300));
+        jDetalleAlgoritmoSSTF.setSize(new java.awt.Dimension(590, 450));
+
+        jTextArea4.setEditable(false);
+        jTextArea4.setBackground(new java.awt.Color(240, 240, 240));
+        jTextArea4.setColumns(20);
+        jTextArea4.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jTextArea4.setRows(5);
+        jTextArea4.setText("Es un algoritmo de planificación de E/S para dispositivos de bloques (dis-\ncos duros).\nEs una mejora directa del algoritmo FIFO para planificación de E/S. \nLa unidad mantiene un buffer de peticiones entrantes, y junto a éstas se\nañade un número que indica el cilindro al que tienen que acceder. Cuan-\nto más pequeño es el número significa que el cilindro está más cerca del\neje.\nTiene la ventaja de ser un algoritmo muy simple y que mejora claramen-\nte el método FIFO, en el sentido de que reduce drásticamente el núme-\nro de saltos que tiene que realizar el cabezal haciendo que el tiempo me-\ndio de respuesta se reduzca.\nEs la planificación que ocupa un menor número de movimientos del cabe-\nzal en la mayoría de los casos a resolver.\n\n");
+        jTextArea4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTextArea4.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTextArea4.setPreferredSize(new java.awt.Dimension(350, 300));
+        jScrollPane6.setViewportView(jTextArea4);
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel16.setText(" La Busqueda Mas Corta Primero (SSTF)");
+
+        javax.swing.GroupLayout jDetalleAlgoritmoSSTFLayout = new javax.swing.GroupLayout(jDetalleAlgoritmoSSTF.getContentPane());
+        jDetalleAlgoritmoSSTF.getContentPane().setLayout(jDetalleAlgoritmoSSTFLayout);
+        jDetalleAlgoritmoSSTFLayout.setHorizontalGroup(
+            jDetalleAlgoritmoSSTFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDetalleAlgoritmoSSTFLayout.createSequentialGroup()
+                .addGap(111, 111, 111)
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(116, Short.MAX_VALUE))
+            .addGroup(jDetalleAlgoritmoSSTFLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane6))
+        );
+        jDetalleAlgoritmoSSTFLayout.setVerticalGroup(
+            jDetalleAlgoritmoSSTFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDetalleAlgoritmoSSTFLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+
+        jDetalleAlgoritmoDekker.setLocation(new java.awt.Point(650, 300));
+        jDetalleAlgoritmoDekker.setSize(new java.awt.Dimension(590, 450));
+
+        jTextArea5.setEditable(false);
+        jTextArea5.setBackground(new java.awt.Color(240, 240, 240));
+        jTextArea5.setColumns(20);
+        jTextArea5.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jTextArea5.setRows(5);
+        jTextArea5.setText("Es un algoritmo de programación concurrente para exclusión mutua, que\npermite a dos procesos o hilos de ejecución compartir un recurso sin con-\nflictos. Fue uno de los primeros algoritmos de exclusión mutua inventados\n, implementado por Edsger Dijkstra.\nSi ambos procesos intentan acceder a la sección crítica simultáneamente,\nel algoritmo elige un proceso según una variable turno. Si el otro proceso\nestá ejecutando en su sección crítica, deberá esperar su finalización.\n \nExisten cinco versiones del algoritmo Dekker, teniendo ciertos fallos los \nprimeros cuatro. La versión 5 es la que trabaja más eficientemente, siendo\nuna combinación de la 1 y la 4.\n\n");
+        jTextArea5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTextArea5.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTextArea5.setPreferredSize(new java.awt.Dimension(350, 300));
+        jScrollPane7.setViewportView(jTextArea5);
+
+        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel17.setText("Dekker");
+
+        javax.swing.GroupLayout jDetalleAlgoritmoDekkerLayout = new javax.swing.GroupLayout(jDetalleAlgoritmoDekker.getContentPane());
+        jDetalleAlgoritmoDekker.getContentPane().setLayout(jDetalleAlgoritmoDekkerLayout);
+        jDetalleAlgoritmoDekkerLayout.setHorizontalGroup(
+            jDetalleAlgoritmoDekkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDetalleAlgoritmoDekkerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE))
+            .addGroup(jDetalleAlgoritmoDekkerLayout.createSequentialGroup()
+                .addGap(235, 235, 235)
+                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jDetalleAlgoritmoDekkerLayout.setVerticalGroup(
+            jDetalleAlgoritmoDekkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDetalleAlgoritmoDekkerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jDetalleAlgoritmoPeterson.setLocation(new java.awt.Point(650, 300));
+        jDetalleAlgoritmoPeterson.setSize(new java.awt.Dimension(590, 300));
+
+        jTextArea6.setEditable(false);
+        jTextArea6.setBackground(new java.awt.Color(240, 240, 240));
+        jTextArea6.setColumns(20);
+        jTextArea6.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jTextArea6.setRows(5);
+        jTextArea6.setText("Es un algoritmo de programación concurrente para exclusión mutua.\nPermite a dos o más procesos o hilos de ejecución compartir un recurso \nsin conflictos, utilizando sólo memoria compartida para la comunicación.\nEs aplicable a cualquier número de procesos con memoria compartida \ntanto del monoprocesador como de multiprocesador.\nEs simple y fácil de verificar.\nPuede usarse para varias secciones críticos.\n\n");
+        jTextArea6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTextArea6.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTextArea6.setPreferredSize(new java.awt.Dimension(350, 180));
+        jScrollPane8.setViewportView(jTextArea6);
+
+        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel18.setText(" Peterson ");
+
+        javax.swing.GroupLayout jDetalleAlgoritmoPetersonLayout = new javax.swing.GroupLayout(jDetalleAlgoritmoPeterson.getContentPane());
+        jDetalleAlgoritmoPeterson.getContentPane().setLayout(jDetalleAlgoritmoPetersonLayout);
+        jDetalleAlgoritmoPetersonLayout.setHorizontalGroup(
+            jDetalleAlgoritmoPetersonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDetalleAlgoritmoPetersonLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE))
+            .addGroup(jDetalleAlgoritmoPetersonLayout.createSequentialGroup()
+                .addGap(234, 234, 234)
+                .addComponent(jLabel18)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jDetalleAlgoritmoPetersonLayout.setVerticalGroup(
+            jDetalleAlgoritmoPetersonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDetalleAlgoritmoPetersonLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jDetalleAlgoritmoLamport.setLocation(new java.awt.Point(650, 300));
+        jDetalleAlgoritmoLamport.setSize(new java.awt.Dimension(590, 450));
+
+        jTextArea7.setEditable(false);
+        jTextArea7.setBackground(new java.awt.Color(240, 240, 240));
+        jTextArea7.setColumns(20);
+        jTextArea7.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jTextArea7.setRows(5);
+        jTextArea7.setText("Este algoritmo recibe el nombre de algoritmo del ascensor porque se com\nporta como tal: va atendiendo las solicitudes que va encontrando en el se\nntido en el que se van desplazando las cabezas de lectura/escritura por el\ndisco. Cuando no hay más solicitudes en ese sentido, o se llega al extremo\n, se invierte el sentido para hacer lo mismo otra vez, pero yendo hacia el \notro lado. Por tanto, en este algoritmo es necesario tener un bit que indi-\nque\nel sentido del movimiento.\nLas cabezas se mueven de un extremo a otro del disco, atendiendo las so\nlicitudes que se van encontrando.\nSu ventaja es que tiene tiempos de servicio acotados, y más variables en \nlos extremos que en el centro.\n");
+        jTextArea7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTextArea7.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTextArea7.setPreferredSize(new java.awt.Dimension(350, 300));
+        jScrollPane9.setViewportView(jTextArea7);
+
+        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel19.setText("Scan");
+
+        javax.swing.GroupLayout jDetalleAlgoritmoLamportLayout = new javax.swing.GroupLayout(jDetalleAlgoritmoLamport.getContentPane());
+        jDetalleAlgoritmoLamport.getContentPane().setLayout(jDetalleAlgoritmoLamportLayout);
+        jDetalleAlgoritmoLamportLayout.setHorizontalGroup(
+            jDetalleAlgoritmoLamportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDetalleAlgoritmoLamportLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(248, 248, 248))
+            .addGroup(jDetalleAlgoritmoLamportLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 563, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jDetalleAlgoritmoLamportLayout.setVerticalGroup(
+            jDetalleAlgoritmoLamportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDetalleAlgoritmoLamportLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+
+        jDetalleAlgoritmoLRU.setLocation(new java.awt.Point(650, 300));
+        jDetalleAlgoritmoLRU.setSize(new java.awt.Dimension(590, 450));
+
+        jTextArea8.setEditable(false);
+        jTextArea8.setBackground(new java.awt.Color(240, 240, 240));
+        jTextArea8.setColumns(20);
+        jTextArea8.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jTextArea8.setRows(5);
+        jTextArea8.setText("Es un algoritmo de reemplazo de página.\nAsume que las páginas recientemente usadas serán usadas de nuevo, \nelimina las páginas que no han sido usadas por mucho tiempo.\nReemplaza la página que no se haya referenciado desde hace más tiempo.\nLRU seleccionará como candidata la página de memoria que no se haya \nreferenciado desde hace más tiempo. Debido al principio de proximidad \nreferenciada, esta página sería la que tiene menos probabilidad de volver \na tener referencias en un futuro próximo.\nEs uno de los mejores y, al contrario que FIFO, no tiene la Anomalía de \nBelady (más fallos de página al aumentar el número de marcos en la me-\nmoria física).\n\n\n");
+        jTextArea8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTextArea8.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTextArea8.setPreferredSize(new java.awt.Dimension(350, 300));
+        jScrollPane10.setViewportView(jTextArea8);
+
+        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel20.setText("Menos Usada Recientemente (LRU)");
+
+        javax.swing.GroupLayout jDetalleAlgoritmoLRULayout = new javax.swing.GroupLayout(jDetalleAlgoritmoLRU.getContentPane());
+        jDetalleAlgoritmoLRU.getContentPane().setLayout(jDetalleAlgoritmoLRULayout);
+        jDetalleAlgoritmoLRULayout.setHorizontalGroup(
+            jDetalleAlgoritmoLRULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDetalleAlgoritmoLRULayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE))
+            .addGroup(jDetalleAlgoritmoLRULayout.createSequentialGroup()
+                .addGap(131, 131, 131)
+                .addComponent(jLabel20)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jDetalleAlgoritmoLRULayout.setVerticalGroup(
+            jDetalleAlgoritmoLRULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDetalleAlgoritmoLRULayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jDetalleAlgoritmoLook.setLocation(new java.awt.Point(650, 300));
+        jDetalleAlgoritmoLook.setSize(new java.awt.Dimension(590, 300));
+
+        jTextArea10.setEditable(false);
+        jTextArea10.setBackground(new java.awt.Color(240, 240, 240));
+        jTextArea10.setColumns(20);
+        jTextArea10.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jTextArea10.setRows(5);
+        jTextArea10.setText("Las cabezas no se mueven hasta el extremo, sino hasta la última solicitud\npendiente en el sentido del movimiento.\nEl algoritmo LOOK es el mismo que el algoritmo SCAN en el sentido de \nque también respeta las solicitudes en ambas direcciones de barrido de la\ncabeza del disco, sin embargo, este algoritmo \"mira\" hacia adelante para\nver si hay solicitudes pendientes en la dirección del movimiento de la \ncabeza.\n");
+        jTextArea10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTextArea10.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTextArea10.setPreferredSize(new java.awt.Dimension(350, 180));
+        jScrollPane12.setViewportView(jTextArea10);
+
+        jLabel22.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel22.setText("Look");
+
+        javax.swing.GroupLayout jDetalleAlgoritmoLookLayout = new javax.swing.GroupLayout(jDetalleAlgoritmoLook.getContentPane());
+        jDetalleAlgoritmoLook.getContentPane().setLayout(jDetalleAlgoritmoLookLayout);
+        jDetalleAlgoritmoLookLayout.setHorizontalGroup(
+            jDetalleAlgoritmoLookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDetalleAlgoritmoLookLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDetalleAlgoritmoLookLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel22)
+                .addGap(250, 250, 250))
+        );
+        jDetalleAlgoritmoLookLayout.setVerticalGroup(
+            jDetalleAlgoritmoLookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDetalleAlgoritmoLookLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jDetalleAlgoritmoScan.setLocation(new java.awt.Point(650, 300));
+        jDetalleAlgoritmoScan.setSize(new java.awt.Dimension(590, 450));
+
+        jTextArea9.setEditable(false);
+        jTextArea9.setBackground(new java.awt.Color(240, 240, 240));
+        jTextArea9.setColumns(20);
+        jTextArea9.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jTextArea9.setRows(5);
+        jTextArea9.setText("La panadería de Lamport es un algoritmo basado en el sistema de turno \nexistente en las panaderías y otros negocios.\nConsiste en darle a cada cliente un número, el cual determina el orden de\natención del vendedor y permitirles realizar su pedido, después de lo cual\nse le libera, pudiendo este comprar nuevamente sólo si obtiene un núme-\nro nuevo.\nLlevado a programación, el Servidor entrega un número a cada hilo que \ndesea acceder a este y les atiende de uno en uno por orden de llegada. \nUna vez que toca le toca su turno, el proceso ingresa a su etapa crítica y \ndespués de realizada esta, el servidor le libera y atiende al siguiente proce-\nso.\nEn el modelo algorítmico que se propone, cada cliente es un hilo, identifi-\ncado con un número único i. Los hilos se deben coordinar para decidir en\ncada momento qué hilo tiene derecho a ejecutar su código de sección \ncrítica.");
+        jTextArea9.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTextArea9.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTextArea9.setPreferredSize(new java.awt.Dimension(350, 300));
+        jScrollPane11.setViewportView(jTextArea9);
+
+        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel21.setText(" Lamport (Bakery)");
+
+        javax.swing.GroupLayout jDetalleAlgoritmoScanLayout = new javax.swing.GroupLayout(jDetalleAlgoritmoScan.getContentPane());
+        jDetalleAlgoritmoScan.getContentPane().setLayout(jDetalleAlgoritmoScanLayout);
+        jDetalleAlgoritmoScanLayout.setHorizontalGroup(
+            jDetalleAlgoritmoScanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDetalleAlgoritmoScanLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDetalleAlgoritmoScanLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(192, 192, 192))
+        );
+        jDetalleAlgoritmoScanLayout.setVerticalGroup(
+            jDetalleAlgoritmoScanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDetalleAlgoritmoScanLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+
+        jDetalleAlgoritmocScan.setLocation(new java.awt.Point(650, 300));
+        jDetalleAlgoritmocScan.setSize(new java.awt.Dimension(590, 450));
+
+        jTextArea11.setEditable(false);
+        jTextArea11.setBackground(new java.awt.Color(240, 240, 240));
+        jTextArea11.setColumns(20);
+        jTextArea11.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jTextArea11.setRows(5);
+        jTextArea11.setText("La planificación SCAN circular (C-SCAN) es una variante de SCAN diseñada\npara dar un tiempo de espera más uniforme. Al igual que SCAN, C-SCAN \nmueve la cabeza de un extremo del disco al otro, atendiendo las solicitu\ndes en el camino, sólo que ahora, cuando la cabeza llega al otro extremo,\nregresa de inmediato al principio del disco sin atender solicitudes.\nEl algoritmo de planificación C-SCAN básicamente trata los cilindros como\nuna lista circular que continúa del último cilindro al primero.\nEn la estrategia C-SCAN, el brazo se mueve del cilindro exterior al interior,\n sirviendo a las peticiones con menor tiempo de búsqueda. Cuando el \nbrazo ha completado su recorrido hacia adentro, salta a la petición más \ncercana al cilindro exterior y a continuación reanuda su recorrido hacia \nadentro procesando peticiones.\n");
+        jTextArea11.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTextArea11.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTextArea11.setPreferredSize(new java.awt.Dimension(350, 300));
+        jScrollPane13.setViewportView(jTextArea11);
+
+        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel23.setText("C-Scan");
+
+        javax.swing.GroupLayout jDetalleAlgoritmocScanLayout = new javax.swing.GroupLayout(jDetalleAlgoritmocScan.getContentPane());
+        jDetalleAlgoritmocScan.getContentPane().setLayout(jDetalleAlgoritmocScanLayout);
+        jDetalleAlgoritmocScanLayout.setHorizontalGroup(
+            jDetalleAlgoritmocScanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDetalleAlgoritmocScanLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane13, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDetalleAlgoritmocScanLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(237, 237, 237))
+        );
+        jDetalleAlgoritmocScanLayout.setVerticalGroup(
+            jDetalleAlgoritmocScanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDetalleAlgoritmocScanLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Simulator");
 
@@ -350,7 +790,7 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabelAlgoritmoSeleccionado)))
-                .addContainerGap(312, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -450,6 +890,7 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jRBLook.setText("LOOK");
+        jRBLook.setEnabled(false);
         jRBLook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRBLookActionPerformed(evt);
@@ -457,12 +898,28 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jButtonDetalleFIFO.setText("Detalles");
+        jButtonDetalleFIFO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDetalleFIFOActionPerformed(evt);
+            }
+        });
 
         jButtonDetalleScan.setText("Detalles");
+        jButtonDetalleScan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDetalleScanActionPerformed(evt);
+            }
+        });
 
         jButtonDetalleLook.setText("Detalles");
+        jButtonDetalleLook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDetalleLookActionPerformed(evt);
+            }
+        });
 
         jRBLRU.setText("LRU");
+        jRBLRU.setEnabled(false);
         jRBLRU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRBLRUActionPerformed(evt);
@@ -477,10 +934,25 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jButtonDetalleSwapping.setText("Detalles");
+        jButtonDetalleSwapping.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDetalleSwappingActionPerformed(evt);
+            }
+        });
 
         jButtonDetalleLRU.setText("Detalles");
+        jButtonDetalleLRU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDetalleLRUActionPerformed(evt);
+            }
+        });
 
         jButton8.setText("Detalles");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         jRBSwapping.setText("SWAPPING");
         jRBSwapping.addActionListener(new java.awt.event.ActionListener() {
@@ -490,11 +962,62 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jButtonDetalleSwapping1.setText("Detalles");
+        jButtonDetalleSwapping1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDetalleSwapping1ActionPerformed(evt);
+            }
+        });
 
         jRBSwapping1.setText("PETERSON");
+        jRBSwapping1.setEnabled(false);
         jRBSwapping1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRBSwapping1ActionPerformed(evt);
+            }
+        });
+
+        jRBDekker.setText("DEKKER");
+        jRBDekker.setEnabled(false);
+        jRBDekker.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRBDekkerActionPerformed(evt);
+            }
+        });
+
+        jButtonDetalleSwapping2.setText("Detalles");
+        jButtonDetalleSwapping2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDetalleSwapping2ActionPerformed(evt);
+            }
+        });
+
+        cScan.setText("C-SCAN");
+        cScan.setEnabled(false);
+        cScan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cScanActionPerformed(evt);
+            }
+        });
+
+        jButton9.setText("Detalles");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+
+        SCAN.setText("SCAN");
+        SCAN.setEnabled(false);
+        SCAN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SCANActionPerformed(evt);
+            }
+        });
+
+        jButton10.setText("Detalles");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
             }
         });
 
@@ -505,60 +1028,61 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(102, 102, 102)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jRBFifo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jRBSSFT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jRBLook, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jRBSwapping, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonDetalleFIFO)
                             .addComponent(jButtonDetalleScan)
-                            .addComponent(jButtonDetalleLook))
+                            .addComponent(jButtonDetalleSwapping)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel4)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jRBLRU, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRBLamport, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRBLook))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton10)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jRBSwapping, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jRBLRU, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jRBLamport, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jRBSwapping1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButtonDetalleLRU)
+                        .addGap(18, 18, 18)
+                        .addComponent(jRBDekker, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButtonDetalleLook)
+                        .addGap(18, 18, 18)
+                        .addComponent(cScan, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton9)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton8)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButtonDetalleSwapping)
-                                .addGap(18, 18, 18)
-                                .addComponent(jRBSwapping1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonDetalleSwapping1))
-                            .addComponent(jButtonDetalleLRU)
-                            .addComponent(jButton8))))
-                .addGap(82, 82, 82))
+                                .addComponent(jButtonDetalleSwapping1)
+                                .addGap(26, 26, 26)
+                                .addComponent(SCAN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonDetalleSwapping2)
+                        .addGap(38, 38, 38))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jRBSwapping1)
-                                .addComponent(jButtonDetalleSwapping1))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jRBSwapping)
-                                .addComponent(jButtonDetalleSwapping)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRBLRU)
-                            .addComponent(jButtonDetalleLRU))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRBLamport)
-                            .addComponent(jButton8)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel4)
                         .addGap(6, 6, 6)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jRBFifo)
@@ -566,12 +1090,38 @@ public class Principal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jRBSSFT)
-                            .addComponent(jButtonDetalleScan))
+                            .addComponent(jButtonDetalleScan)
+                            .addComponent(jRBLRU)
+                            .addComponent(jButtonDetalleLRU)
+                            .addComponent(jRBDekker)
+                            .addComponent(jButton8)))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(31, 31, 31)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jRBSwapping1)
+                                .addComponent(jButtonDetalleSwapping1)
+                                .addComponent(SCAN)
+                                .addComponent(jButtonDetalleSwapping2)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jRBLamport)
+                                .addComponent(jButton10)))))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jRBSwapping)
+                            .addComponent(jButtonDetalleSwapping)
+                            .addComponent(jRBLook)
+                            .addComponent(jButtonDetalleLook)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRBLook)
-                            .addComponent(jButtonDetalleLook))))
-                .addContainerGap(21, Short.MAX_VALUE))
+                            .addComponent(cScan)
+                            .addComponent(jButton9))))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         jLabel11.setText("2) Posicion Inicial del cabezal del Disco:");
@@ -623,19 +1173,17 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanelDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelDiscoLayout.createSequentialGroup()
-                        .addGroup(jPanelDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelDiscoLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextFieldPosicionDisco, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelDiscoLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel12)))
-                        .addGap(20, 20, 20))
-                    .addGroup(jPanelDiscoLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane3)))
+                        .addGroup(jPanelDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanelDiscoLayout.createSequentialGroup()
+                                .addGroup(jPanelDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanelDiscoLayout.createSequentialGroup()
+                                        .addComponent(jLabel11)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jTextFieldPosicionDisco, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel12))
+                                .addGap(20, 20, 20))
+                            .addComponent(jScrollPane3))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelDiscoLayout.setVerticalGroup(
@@ -689,7 +1237,7 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(109, 196, Short.MAX_VALUE))
                     .addComponent(jPanelDisco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel10)
@@ -711,7 +1259,7 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jPanelAlgoritmoPlanificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -824,6 +1372,8 @@ public class Principal extends javax.swing.JFrame {
                 break;
             case("SWAPPING"):
                 //TODO SWAPPING
+                SwappingView sw = new SwappingView(ptm.getSelectedRows());
+                sw.setVisible(true);
                 break;
             case("LRU"):
                 //TODO LRU
@@ -847,6 +1397,7 @@ public class Principal extends javax.swing.JFrame {
         jPanelAlgoritmoPlanificacion.setVisible(true);
     }//GEN-LAST:event_jRBFifoActionPerformed
 
+    
     private void jRBSwappingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBSwappingActionPerformed
         // TODO add your handling code here:
         this.algoritmoSeleccionado = "SWAPPING";
@@ -854,10 +1405,13 @@ public class Principal extends javax.swing.JFrame {
         jPanelAlgoritmoPlanificacion.setVisible(true);
     }//GEN-LAST:event_jRBSwappingActionPerformed
 
+    
+    
     private void jRBSwapping1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBSwapping1ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jRBSwapping1ActionPerformed
 
+   
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         if(!jTextFieldPeticionPos.getText().isEmpty()){
@@ -866,6 +1420,59 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButtonDetalleSwappingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDetalleSwappingActionPerformed
+        jDetalleAlgoritmoSwapping.setVisible(true);
+    }//GEN-LAST:event_jButtonDetalleSwappingActionPerformed
+
+    private void jButtonDetalleFIFOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDetalleFIFOActionPerformed
+      jDetalleAlgoritmoFifo.setVisible(true);
+    }//GEN-LAST:event_jButtonDetalleFIFOActionPerformed
+
+    private void jButtonDetalleScanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDetalleScanActionPerformed
+        jDetalleAlgoritmoSSTF.setVisible(true);
+    }//GEN-LAST:event_jButtonDetalleScanActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        jDetalleAlgoritmoDekker.setVisible(true);
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButtonDetalleSwapping1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDetalleSwapping1ActionPerformed
+        jDetalleAlgoritmoPeterson.setVisible(true);
+    }//GEN-LAST:event_jButtonDetalleSwapping1ActionPerformed
+
+    private void jButtonDetalleLRUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDetalleLRUActionPerformed
+        jDetalleAlgoritmoLRU.setVisible(true);
+    }//GEN-LAST:event_jButtonDetalleLRUActionPerformed
+
+    private void jRBDekkerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBDekkerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRBDekkerActionPerformed
+
+    private void jButtonDetalleSwapping2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDetalleSwapping2ActionPerformed
+        jDetalleAlgoritmoLamport.setVisible(true);
+    }//GEN-LAST:event_jButtonDetalleSwapping2ActionPerformed
+
+    private void jButtonDetalleLookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDetalleLookActionPerformed
+        jDetalleAlgoritmoLook.setVisible(true);
+    }//GEN-LAST:event_jButtonDetalleLookActionPerformed
+
+    private void cScanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cScanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cScanActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        jDetalleAlgoritmocScan.setVisible(true);
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void SCANActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SCANActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SCANActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+      jDetalleAlgoritmoScan.setVisible(true);
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    
     /**
      * @param args the command line arguments
      */
@@ -912,20 +1519,35 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton SCAN;
+    private javax.swing.JRadioButton cScan;
     private javax.swing.JDialog jAbout;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JButton jButtonDetalleFIFO;
     private javax.swing.JButton jButtonDetalleLRU;
     private javax.swing.JButton jButtonDetalleLook;
     private javax.swing.JButton jButtonDetalleScan;
     private javax.swing.JButton jButtonDetalleSwapping;
     private javax.swing.JButton jButtonDetalleSwapping1;
+    private javax.swing.JButton jButtonDetalleSwapping2;
     private javax.swing.JButton jButtonSimular;
+    private javax.swing.JDialog jDetalleAlgoritmoDekker;
+    private javax.swing.JDialog jDetalleAlgoritmoFifo;
+    private javax.swing.JDialog jDetalleAlgoritmoLRU;
+    private javax.swing.JDialog jDetalleAlgoritmoLamport;
+    private javax.swing.JDialog jDetalleAlgoritmoLook;
+    private javax.swing.JDialog jDetalleAlgoritmoPeterson;
+    private javax.swing.JDialog jDetalleAlgoritmoSSTF;
+    private javax.swing.JDialog jDetalleAlgoritmoScan;
+    private javax.swing.JDialog jDetalleAlgoritmoSwapping;
+    private javax.swing.JDialog jDetalleAlgoritmocScan;
     private javax.swing.JDialog jDocumentation;
     private javax.swing.JMenuItem jItemAgregarFila;
     private javax.swing.JMenuItem jItemEliminarFila;
@@ -934,7 +1556,17 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -957,6 +1589,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelAlgoritmoPlanificacion;
     private javax.swing.JPanel jPanelDisco;
     private javax.swing.JPopupMenu jPopUpMenuTable;
+    private javax.swing.JRadioButton jRBDekker;
     private javax.swing.JRadioButton jRBFifo;
     private javax.swing.JRadioButton jRBLRU;
     private javax.swing.JRadioButton jRBLamport;
@@ -965,11 +1598,31 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRBSwapping;
     private javax.swing.JRadioButton jRBSwapping1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane jScrollPane12;
+    private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTextArea jTAListDisc;
     private javax.swing.JTable jTableProcesos;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea10;
+    private javax.swing.JTextArea jTextArea11;
+    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea jTextArea3;
+    private javax.swing.JTextArea jTextArea4;
+    private javax.swing.JTextArea jTextArea5;
+    private javax.swing.JTextArea jTextArea6;
+    private javax.swing.JTextArea jTextArea7;
+    private javax.swing.JTextArea jTextArea8;
+    private javax.swing.JTextArea jTextArea9;
     private javax.swing.JTextField jTextFieldPeticionPos;
     private javax.swing.JTextField jTextFieldPosicionDisco;
     private javax.swing.JLabel mensajeError;
