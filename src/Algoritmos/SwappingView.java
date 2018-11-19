@@ -17,18 +17,18 @@ public class SwappingView extends javax.swing.JFrame {
     /**
      * Creates new form Ventana
      */
-    private ArrayList<Proceso> procesoLista;
+    private ArrayList<Proceso> procesoLista; //atributo procesoLista de tipo ArrayList apra poder tratar el arreglo de procesos que recibiré
     
-    public SwappingView(ArrayList<Proceso> p_procesoLista) {
+    public SwappingView(ArrayList<Proceso> p_procesoLista) { //Swapping view recibirá un ArrayList para tratar en clase Swapping
         initComponents();
-        this.setProcLista(p_procesoLista);
+        this.setProcLista(p_procesoLista); //seteo la lista de procesos
         
     }
-    private void setProcLista(ArrayList pArray){
+    private void setProcLista(ArrayList pArray){ //seter del atributo procesoLista
         this.procesoLista = pArray;
     }
-    public ArrayList<Proceso> getProcLista(){
-        return this.procesoLista;
+    public ArrayList<Proceso> getProcLista(){ //geter del atributo procesoLista
+        return this.procesoLista; 
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -69,7 +69,7 @@ public class SwappingView extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabel1.setText("SWAPPING");
@@ -355,7 +355,7 @@ public class SwappingView extends javax.swing.JFrame {
         */
         
  
-        Swapping swapping = new Swapping (this.getProcLista()); 
+        Swapping swapping = new Swapping (this.getProcLista()); // creo un objeto de la clase Swapping y le paso un arreglo de procesos
         /*int cantidad2, i;
         int cantidad1 = Integer.parseInt(aDt.getText());
         if(cantidad1 > 5){ // evaluo si mi cantidad1 es mayor a 5, donde 5 es el tamaño del array memReal[]
@@ -440,18 +440,20 @@ public class SwappingView extends javax.swing.JFrame {
             }
             
         }*/
-        T1.setText("");
-        T1.append(swapping.mostrarProcPrinc());
-        T2.setText("");
-        T2.append(swapping.mostrarProcSecond());
+        T1.setText(""); // en el áre de texto T1 seteeo con espacio vacío para poder limpiar el área de texto
+        T1.append(swapping.mostrarProcPrinc()); //agrego al área de texto T1 el retorno del método mostrarProcPrinc() de la clase Swapping
+        T2.setText(""); // en el áre de texto T2 seteeo con espacio vacío para poder limpiar el área de texto
+        T2.append(swapping.mostrarProcSecond()); //agrego al área de texto T2 el retorno del método mostrarProcSecond() de la clase Swapping
         
-        swapping.swappear();
-        Tx.setText("");
-        Tx.append(swapping.cambiosLugar());
-        T1S.setText("");
-        T1S.append(swapping.mostrarPrin());
-        T2S.setText("");
-        T2S.append(swapping.mostrarSecu());
+        
+        
+        swapping.swappear(); // llamo al método swappear para que se realice swapping con las listas de los procesos
+        Tx.setText("");// en el áre de texto Tx seteeo con espacio vacío para poder limpiar el área de texto
+        Tx.append(swapping.cambiosLugar());//agrego al área de texto Tx el retorno del método mostrarProcPrinc() de la clase Swapping
+        T1S.setText("");// en el áre de texto T1S seteeo con espacio vacío para poder limpiar el área de texto 
+        T1S.append(swapping.mostrarPrin()); //al área de texto T1S agrego el retorno del método mostrarPrin() de la clase Swapping
+        T2S.setText("");// en el áre de texto T2S seteeo con espacio vacío para poder limpiar el área de texto
+        T2S.append(swapping.mostrarSecu()); //al área de texto T2S agrego el retorno del método mostrarSecu() de la clase Swapping
         
           
         
