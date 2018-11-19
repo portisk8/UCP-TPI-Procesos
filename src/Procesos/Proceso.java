@@ -5,6 +5,11 @@
  */
 package Procesos;
 
+import Algoritmos.LamportView;
+import Algoritmos.Lock;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Augusto
@@ -17,6 +22,26 @@ public class Proceso implements Comparable<Proceso>, Runnable {
     private int rafagaCpu;
     private boolean bloqueado;
     private boolean seleccionado;
+    private LamportView lamportView;
+    
+    int myId;
+    Lock lock;
+    static int Total=0; //  Seccion Crítica!!!
+    public Proceso(int id, Lock lock, LamportView lv) {
+        myId = id;
+        this.lock = lock;
+        lamportView = lv;
+    }
+    
+    void nonCriticalSection() {
+        System.out.println("Proceso " + myId + " SALIO de la seccion critica\n");
+        lamportView.getResultadoLamport().setText(lamportView.getResultadoLamport().getText() + " \n Proceso " + myId + " SALIO de la seccion critica\n");
+       
+    }
+    void CriticalSection() {
+        System.out.println("Proceso " + myId + " ENTRO en la seccion critica");
+        lamportView.getResultadoLamport().setText(lamportView.getResultadoLamport().getText() + " \n Proceso " + myId + " ENTRO en la seccion critica");
+    }
     
 
     public Proceso() {
@@ -92,7 +117,17 @@ public class Proceso implements Comparable<Proceso>, Runnable {
 
     @Override
     public void run() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Proceso.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        lock.accederSC(myId);       
+        System.out.println("Proceso " + myId + " DESEA entrar en la seccion Critica");
+        lamportView.getResultadoLamport().setText(lamportView.getResultadoLamport().getText() + " \n Proceso " + myId + " DESEA entrar en la seccion Critica");
+        CriticalSection();
+        lock.liberarSC(myId);
+        nonCriticalSection();
     }
     
     

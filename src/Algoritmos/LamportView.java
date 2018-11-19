@@ -10,6 +10,7 @@ import Procesos.ProcesoTableModel;
 import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -19,7 +20,6 @@ public class LamportView extends javax.swing.JFrame {
 
     public static ArrayList<Proceso> listProcess;
     public static ArrayList<Proceso> listProcessTerminados = new ArrayList<Proceso>();
-    private Lamport lamport;
     public static boolean seccionCriticaOcupada;
     
     public static ProcesoTableModel procesoTableModelEspera;
@@ -37,10 +37,29 @@ public class LamportView extends javax.swing.JFrame {
         this.setProcesoTableModelEspera(new ProcesoTableModel(l_listProcess));
         this.setProcesoTableModelEnCurso(new ProcesoTableModel(new ArrayList<Proceso>()));
         this.setProcesoTableModelSalientes(new ProcesoTableModel(new ArrayList<Proceso>()));
-        this.jTableProcesoEnCurso.setModel(this.getProcesoTableModelEnCurso());
-        this.jTableProcesosEspera.setModel(this.getProcesoTableModelEspera());
-        this.jTableProcesosSalientes.setModel(this.getProcesoTableModelSalientes());
+        Thread t[];
+
+        t=new Thread[l_listProcess.size()];
+        Lock lock = new Lamport(l_listProcess.size());
+        // o algun otro algoritmo de mutex
+        // Lock lock = new Bakery(N);
+        for (int i=0; i<l_listProcess.size(); i++) {
+            t[i] = new Thread(new Proceso(i, lock, this));
+            t[i].start();
+            //System.out.println("Proceso " + i + " DESEA entrar en la seccion Critica");
+        }
+       
     }
+
+    public JTextArea getResultadoLamport() {
+        return resultadoLamport;
+    }
+
+    public void setResultadoLamport(JTextArea resultadoLamport) {
+        this.resultadoLamport = resultadoLamport;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,139 +70,17 @@ public class LamportView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTableProcesosEspera = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTableProcesoEnCurso = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTableProcesosSalientes = new javax.swing.JTable();
-        jLabel4 = new javax.swing.JLabel();
-        jBtnIniciar = new javax.swing.JButton();
+        resultadoLamport = new javax.swing.JTextArea();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Muestras de Resultados");
 
-        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 179, 20), 3, true));
-
-        jTableProcesosEspera.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTableProcesosEspera);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 930, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jLabel2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(51, 179, 20));
-        jLabel2.setText("Procesos");
-        jLabel2.setToolTipText("");
-
-        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 179, 20), 3, true));
-
-        jTableProcesoEnCurso.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(jTableProcesoEnCurso);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jLabel3.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(51, 179, 20));
-        jLabel3.setText("Seccion Critica");
-        jLabel3.setToolTipText("");
-
-        jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 179, 20), 3, true));
-
-        jTableProcesosSalientes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane4.setViewportView(jTableProcesosSalientes);
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 930, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jLabel4.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(51, 179, 20));
-        jLabel4.setText("Procesos Salientes");
-        jLabel4.setToolTipText("");
-
-        jBtnIniciar.setText("I N I C I A R");
-        jBtnIniciar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnIniciarActionPerformed(evt);
-            }
-        });
+        resultadoLamport.setColumns(20);
+        resultadoLamport.setRows(5);
+        resultadoLamport.setAlignmentX(400.0F);
+        resultadoLamport.setAlignmentY(400.0F);
+        jScrollPane1.setViewportView(resultadoLamport);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -191,58 +88,19 @@ public class LamportView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jBtnIniciar)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(365, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(jBtnIniciar)))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(594, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jBtnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIniciarActionPerformed
-        // TODO add your handling code here:
-        //new Thread(this.fifo).start();
-        ArrayList<Thread> hilos = new ArrayList();
-        for (Proceso process : this.getListProcess()) {
-            hilos.add(new Thread(new Lamport(this,process)));
-        }
-        for (Thread hilo : hilos) {
-            hilo.start();
-        }
-    }//GEN-LAST:event_jBtnIniciarActionPerformed
 
     public ProcesoTableModel getProcesoTableModelEspera() {
         return procesoTableModelEspera;
@@ -268,13 +126,7 @@ public class LamportView extends javax.swing.JFrame {
         this.procesoTableModelSalientes = procesoTableModelSalientes;
     }
     
-    public Lamport getLamport() {
-        return lamport;
-    }
-
-    public void setLamport(Lamport lamport) {
-        this.lamport = lamport;
-    }
+    
     
     public ArrayList<Proceso> getListProcess() {
         return listProcess;
@@ -284,46 +136,10 @@ public class LamportView extends javax.swing.JFrame {
         this.listProcess = listProcess;
     }
 
-    public JTable getjTableProcesoEnCurso() {
-        return jTableProcesoEnCurso;
-    }
-
-    private void setjTableProcesoEnCurso(JTable jTableProcesoEnCurso) {
-        this.jTableProcesoEnCurso = jTableProcesoEnCurso;
-    }
-
-    public JTable getjTableProcesosEspera() {
-        return jTableProcesosEspera;
-    }
-
-    private void setjTableProcesosEspera(JTable jTableProcesosEspera) {
-        this.jTableProcesosEspera = jTableProcesosEspera;
-    }
-
-    public JTable getjTableProcesosSalientes() {
-        return jTableProcesosSalientes;
-    }
-
-    private void setjTableProcesosSalientes(JTable jTableProcesosSalientes) {
-        this.jTableProcesosSalientes = jTableProcesosSalientes;
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBtnIniciar;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTableProcesoEnCurso;
-    private javax.swing.JTable jTableProcesosEspera;
-    private javax.swing.JTable jTableProcesosEspera1;
-    private javax.swing.JTable jTableProcesosSalientes;
+    private javax.swing.JTextArea resultadoLamport;
     // End of variables declaration//GEN-END:variables
 }

@@ -10,6 +10,6 @@ package Algoritmos;
  * @author Juan Carlos
  */
 public interface Lock {
-public void accederSC();
-public void liberarSC();
+public void accederSC(int pid);
+public void liberarSC(int pid);
 }

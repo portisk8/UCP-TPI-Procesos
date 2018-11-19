@@ -1294,6 +1294,8 @@ public class Principal extends javax.swing.JFrame {
     private void jRBLamportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBLamportActionPerformed
         // TODO add your handling code here:
         this.algoritmoSeleccionado = "LAMPORT";
+        jPanelDisco.setVisible(false);
+        jPanelAlgoritmoPlanificacion.setVisible(true);
     }//GEN-LAST:event_jRBLamportActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
