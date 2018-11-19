@@ -79,6 +79,10 @@ public class Principal extends javax.swing.JFrame {
         jPopUpMenuTable = new javax.swing.JPopupMenu();
         jItemAgregarFila = new javax.swing.JMenuItem();
         jItemEliminarFila = new javax.swing.JMenuItem();
+        jDetalleAlgoritmo = new javax.swing.JDialog();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        jLabel14 = new javax.swing.JLabel();
         jPanelAlgoritmoPlanificacion = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -294,6 +298,46 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jPopUpMenuTable.add(jItemEliminarFila);
+
+        jDetalleAlgoritmo.setLocation(new java.awt.Point(650, 300));
+        jDetalleAlgoritmo.setSize(new java.awt.Dimension(550, 450));
+
+        jTextArea2.setEditable(false);
+        jTextArea2.setBackground(new java.awt.Color(240, 240, 240));
+        jTextArea2.setColumns(20);
+        jTextArea2.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jTextArea2.setRows(5);
+        jTextArea2.setText("En este método el sistema operativo sólo tiene que guardar en qué \norden las páginas fueron cargadas, de modo que al necesitar hacer\nespacio pueda fácilmente elegir la primera página cargada. Se usa \nuna cola, al cargar una página nueva se ingresa en el último lugar. \nAunquelas colas FIFO son simples e intuitivas, no se comportan de \nmanera aceptable en la aplicación práctica, por lo que es raro su uso\nen su forma simple. Uno de los problemas que presentan \nes la llamada Anomalía FIFO oAnomalía de Belady. Belady encontró\nejemplos en los que un sistema con un número de marcos de páginas\nigual a tres tenía menos fallosde páginas que un sistema con cuatro \nmarcos de páginas. El problema consiste en que podemos quitar de \nmemoria una página de memoria muy usada, sólo porque es la más\nantigua");
+        jTextArea2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTextArea2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTextArea2.setPreferredSize(new java.awt.Dimension(350, 250));
+        jScrollPane4.setViewportView(jTextArea2);
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel14.setText("              Primero en Entrar Pimero En Salir (FIFO)");
+
+        javax.swing.GroupLayout jDetalleAlgoritmoLayout = new javax.swing.GroupLayout(jDetalleAlgoritmo.getContentPane());
+        jDetalleAlgoritmo.getContentPane().setLayout(jDetalleAlgoritmoLayout);
+        jDetalleAlgoritmoLayout.setHorizontalGroup(
+            jDetalleAlgoritmoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDetalleAlgoritmoLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(64, Short.MAX_VALUE))
+            .addGroup(jDetalleAlgoritmoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4)
+                .addContainerGap())
+        );
+        jDetalleAlgoritmoLayout.setVerticalGroup(
+            jDetalleAlgoritmoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDetalleAlgoritmoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(47, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Simulator");
@@ -885,40 +929,9 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonDetalleSwappingActionPerformed
 
     private void jButtonDetalleFIFOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDetalleFIFOActionPerformed
-        // TODO add your handling code here:
+      jDetalleAlgoritmo.setVisible(true);
     }//GEN-LAST:event_jButtonDetalleFIFOActionPerformed
 
-    public void obtenerAlgoritmo(){
-    switch(this.algoritmoSeleccionado){
-            case("FIFO"):
-                //TODO fifo
-                //FifoView fv = new FifoView(ptm.getSelectedRows());
-                //fv.setVisible(true);
-                break;
-            case("SSTF"):
-                //TODO scan
-                //DiscoView dv = new DiscoView(Integer.parseInt(jTextFieldPosicionDisco.getText()), listadoPeticiones);
-                //dv.setVisible(true);
-                break;
-            case("LOOK"):
-                //TODO LOOK
-                break;
-            case("SWAPPING"):
-                //TODO SWAPPING
-                break;
-            case("LRU"):
-                //TODO LRU
-                break;
-            case("LAMPORT"):
-                //TODO LAMPORT
-                LamportView lv = new LamportView(ptm.getSelectedRows());
-                lv.setVisible(true);
-                break;
-            default:
-                mensajeError.setText(mensajeError.getText() + " Debe seleccionar un Algoritmo.");
-                mensajeError.setVisible(true);
-        }
-} 
     
     /**
      * @param args the command line arguments
@@ -980,6 +993,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonDetalleSwapping;
     private javax.swing.JButton jButtonDetalleSwapping1;
     private javax.swing.JButton jButtonSimular;
+    private javax.swing.JDialog jDetalleAlgoritmo;
     private javax.swing.JDialog jDocumentation;
     private javax.swing.JMenuItem jItemAgregarFila;
     private javax.swing.JMenuItem jItemEliminarFila;
@@ -988,6 +1002,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1021,9 +1036,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextArea jTAListDisc;
     private javax.swing.JTable jTableProcesos;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextFieldPeticionPos;
     private javax.swing.JTextField jTextFieldPosicionDisco;
     private javax.swing.JLabel mensajeError;
